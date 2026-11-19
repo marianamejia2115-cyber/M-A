@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Novena</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f4ee;
+            color: #333;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #5a2a0c;
+        }
+        .day {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff8dc;
+            border: 1px solid #e3c181;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .day.active {
+            display: block;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 15px;
+        }
+        button {
+            background-color: #a3671e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Novena de Ejemplo</h1>
+
+<div id="day1" class="day active">
+    <h2>Día 1</h2>
+    <p>Oración para el primer día de la novena...</p>
+</div>
+
+<div id="day2" class="day">
+    <h2>Día 2</h2>
+    <p>Oración para el segundo día de la novena...</p>
+</div>
+
+<div id="day3" class="day">
+    <h2>Día 3</h2>
+    <p>Oración para el tercer día de la novena...</p>
+</div>
+
+<!-- Repite para los 9 días -->
+
+<div class="buttons">
+    <button id="prev" onclick="changeDay(-1)" disabled>Anterior</button>
+    <button id="next" onclick="changeDay(1)">Siguiente</button>
+</div>
+
+<script>
+    let currentDay = 1;
+    const totalDays = 3;  // Cambia a 9 para toda la novena
+
+    function changeDay(direction) {
+        document.getElementById('day' + currentDay).classList.remove('active');
+        currentDay += direction;
+        document.getElementById('day' + currentDay).classList.add('active');
+
+        document.getElementById('prev').disabled = currentDay === 1;
+        document.getElementById('next').disabled = currentDay === totalDays;
+    }
+</script>
+
+</body>
+</html>
